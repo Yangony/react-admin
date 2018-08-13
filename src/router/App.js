@@ -21,7 +21,9 @@ function RouterConfig({ history, app }) {
       <Router history={history}>
         <Switch>
           <Route exact path='/' component={Login} />
-          <Route path="/pro" component={()=>requireAuth('/pro',ProIndex)} />
+          <Route onEnter= {requireAuth} >
+            <Route path="/pro" component={ProIndex}></Route>
+          </Route>
         </Switch>
       </Router>
   );
